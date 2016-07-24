@@ -30,6 +30,8 @@ input = new InputModule.Input
 	width: 500
 	height: 60
 	goButton: false # Set true here in order to use "Go" instead of "Return" as button (only works on real devices)
+	onFocus: () -> {} # Set a callback function to be called when your input is focused.
+	onBlur: () -> {} # Set a callback function to be called when your input is blurred.
 ```
 
 #### Styling your input

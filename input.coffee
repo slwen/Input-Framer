@@ -32,6 +32,8 @@ class exports.Input extends Layer
 		options.virtualKeyboard ?= if Utils.isMobile() then false else true
 		options.type ?= "text"
 		options.goButton ?= false
+		options.onFocus ?= () -> {}
+		options.onBlur ?= () -> {}
 
 		super options
 
@@ -59,8 +61,10 @@ class exports.Input extends Layer
 			@input.addEventListener "focus", ->
 				exports.keyboardLayer.bringToFront()
 				exports.keyboardLayer.states.next()
+				options.onFocus()
 			@input.addEventListener "blur", ->
 				exports.keyboardLayer.states.switch "default"
+				options.onBlur()
 
 	updatePlaceholderColor: (color) ->
 		@placeholderColor = color
